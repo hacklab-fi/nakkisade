@@ -30,12 +30,12 @@ task lists for individuals.
 
 ## Running
 
-Like any django app (todo: proper docs)
-'''
+Like any django app
+```
 ./manage.py makemigrations tasks
 ./manage.py migrate
 ./manage.py createsuperuser
-'''
+```
 
 Use the admin interface to create events, tasks and tags.
 
@@ -44,3 +44,4 @@ URLs:
 http://127.0.0.1:8000/admin/
 http://127.0.0.1:8000/tasks/
 
+To generate task list, log in to app using the login link (use the admin account). 

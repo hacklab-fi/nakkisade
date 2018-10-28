@@ -1,6 +1,7 @@
+{% extends "tasks/base.html" %}
+{% block content %}
 <h1> {{ event }} </h1>
 <h2>Task list</h2>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 {% for task in tasks %}
 <h3> {{ task.name }} </h2>
 <div>
@@ -12,12 +13,12 @@ Min assignees: {{ task.min_assignees }}
 <h4>Required tags</h4>
 <div>
 {% for tag in task.required_tags.all %}
-    {{ tag }}
+    {{ tag.name }}
 {% endfor %}
 </div>
 
-{% if task.failed %} Can't find people to complete task! <br/> {% endif %}
-{% if not task.complete %} Not enough people! <br/> {% endif %}
+{% if task.failed %} <font color="red">Can't find people to complete task!</font><br/> {% endif %}
+{% if not task.complete %} <font color="red">Not enough people!</font> <br/> {% endif %}
 <h4>Assigned people</h4>
 {% for person in task.assigned %}
 <div>
@@ -35,3 +36,4 @@ Min assignees: {{ task.min_assignees }}
 {% endfor %}
 
 {% endfor %}
+{% endblock %}
