@@ -1,0 +1,16 @@
+<h1> {{ event }} </h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'tasks:addperson' event.id %}" method="post">
+{% csrf_token %}
+<input type="text" name="name" id="name">
+<label for="name">Name</label><br>
+{% for tag in event.tag_set.all %}
+    <input type="checkbox" name="tag" id="tag{{ tag.id }}" value="{{ tag.id }}">
+    <label for="tag{{ tag.id }}">{{ tag.name }}</label><br>
+{% endfor %}
+
+<input type="submit" value="Register for event">
+</form>
+<a href="{%url 'tasks:tasklist' event.id %}">Generate task list</a>
