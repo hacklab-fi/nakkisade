@@ -19,6 +19,15 @@ def event(request, event_id):
         raise Http404("Event does not exist")
     return render(request, 'tasks/event.html', {'event': event})
 
+def register(request, event_id):
+    try:
+        event = Event.objects.get(pk=event_id)
+    except Event.DoesNotExist:
+        raise Http404("Event does not exist")
+    if not event.active:
+        raise Http404("Event does not exist")
+    return render(request, 'tasks/register.html', {'event': event})
+
 def addperson(request, event_id):
     name = request.POST['name']
     event = Event.objects.get(pk=event_id)

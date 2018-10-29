@@ -1,27 +1,37 @@
 {% extends "tasks/base.html" %}
 {% block content %}
-<h1> {{ event }} </h1>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="{% url 'tasks:addperson' event.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-<legend>Enter your information to register</legend>
-Name:<br/>
-<input type="text" name="name" id="name" size="35"><br/>
-Tags:<br/>
-<div>
-{% for tag in event.tag_set.all %}
-    <input type="checkbox" name="tag" id="tag{{ tag.id }}" value="{{ tag.id }}">
-    <label for="tag{{ tag.id }}">{{ tag.name }}</label><br/>
-{% endfor %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ event }}</h5>
+        {% if event.description %}
+        <p class="card-text">{{ event.description }}</p>
+        {% endif %}
+        {% if event.url %}
+        <a href="{{ event.url }}" class="card-link">{{ event.url }}</a>
+        {% endif %}
+        <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">Register</a></li></p>
+        {% if user.is_authenticated %}
+            <a href="{%url 'tasks:tasklist' event.id %}" class="btn btn-warning">Generate task list</a>
+        {% endif %}
+        </div>
 </div>
-<br/>
-<input type="submit" value="Register">
-</fieldset>
-</form>
-{% if user.is_authenticated %}
-<a href="{%url 'tasks:tasklist' event.id %}">Generate task list</a>
+
+{% if event.public_tasks %}
+<div class="card">
+    <div class="card-header">
+        Tasks
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for task in event.task_set.all %}
+        <li class="list-group-item"><b>{{ task.name }}</b>
+            {% if task.description %}
+            <br/>
+            <p class="card-text">{{ task.description }}</p>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+</div>
 {% endif %}
+
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<div class="panel panel-primary">
+<div class="panel-heading">Register to <a href="{% url 'tasks:event' event.id %}">{{ event }}</a></div>
+<div class="panel-body">
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'tasks:addperson' event.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" name="name" id="name" class="form-control">
+</div>
+Tags<br/>
+<div>
+{% for tag in event.tag_set.all %}
+<div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><label><input type="checkbox" name="tag" id="tag{{ tag.id }}" value="{{ tag.id }}"> {{ tag.name }} </label></h5>
+          {% if tag.description %}
+          <p class="card-text">{{ tag.description }}</p>
+          {% endif %}
+        </div>
+</div>
+{% endfor %}
+</div>
+<br/>
+<input type="submit" value="Register" class="btn btn-primary">
+</fieldset>
+</form>
+</div>
+
+{% endblock %}

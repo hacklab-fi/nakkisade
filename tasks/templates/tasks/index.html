@@ -1,15 +1,27 @@
 {% extends "tasks/base.html" %}
-{% block sidebar %}
-{% if event_list %}
-    <ul>
-    {% for event in event_list %}
-        <li><a href="{% url 'tasks:event' event.id %}">{{ event.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No events are available.</p>
-{% endif %}
-{% endblock %}
+
 {% block content %}
-Choose event
+<div class="jumbotron text-center">
+    <h1>Welcome to Nakkisade event organizing</h1>
+    <p>Choose event</p>
+</div>
+{% if event_list %}
+<div class="row">
+    {% for event in event_list %}
+    <div class="col-sm-4">
+    <h3>{{ event.name }}</h3>
+    <p>{{ event.description }}</p>
+    {% if event.url %}
+        <p><a href="{{ event.url }}">{{ event.url }}</a></p>
+    {% endif %}
+    <p><a href="{% url 'tasks:event' event.id %}" class="btn btn-info">Information</a></li></p>
+    <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">Register</a></li></p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">
+    <strong>No events are available</strong> - add them as admin.
+</div>
+{% endif %}
 {% endblock %}
