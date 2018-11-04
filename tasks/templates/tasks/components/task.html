@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">{{ task.name }}</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+        {% if not task.complete %}
+            <font color="red">
+        {% endif %}
+        {{ task.assigned|length }}/{{ task.min_assignees }} assignees,
+        {% if not task.complete %}
+            </font>
+        {% endif %}
+        {{ task.points }} points.
+        {% if task.required_tags.all %}
+            {% for tag in task.required_tags.all %}
+            <span class="badge badge-primary">{{ tag.name }}</span>
+            {% endfor %}
+        {% endif %}
+        </li>
+        {% if task.description %}
+        <p class="card-text">
+        {{ task.description }}
+        </p>
+{% endif %}
+</ul>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                {% for person in task.assigned %}
+                    <li class="list-group-item">{{ person.name }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% if task.failed %} <font color="red">Can't find people to complete task!</font><br/> {% endif %}
+        </div>
+    </div>
+</div>

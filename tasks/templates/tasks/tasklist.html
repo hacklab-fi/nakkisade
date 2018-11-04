@@ -1,39 +1,30 @@
 {% extends "tasks/base.html" %}
 {% block content %}
 <h1> {{ event }} </h1>
-<h2>Task list</h2>
+{% if user.is_authenticated %}
+<p><a href="{% url 'tasks:create_tasks' event.id %}" class="btn btn-info">Reassign tasks</a></li></p>
+{% endif %}
+<h2>Tasks</h2>
 {% for task in tasks %}
-<h3> {{ task.name }} </h2>
-<div>
-{{ task.description }}
-</div>
-<div>
-Min assignees: {{ task.min_assignees }} 
-</div>
-<h4>Required tags</h4>
-<div>
-{% for tag in task.required_tags.all %}
-    {{ tag.name }}
+{% include "tasks/components/task.html" %}
+<br/>
 {% endfor %}
+<h2>Assignees</h2> 
+<div class="card">
+<div class="card-header">
+    Assignees
 </div>
+<ul class="list-group list-group-flush">
 
-{% if task.failed %} <font color="red">Can't find people to complete task!</font><br/> {% endif %}
-{% if not task.complete %} <font color="red">Not enough people!</font> <br/> {% endif %}
-<h4>Assigned people</h4>
-{% for person in task.assigned %}
-<div>
-{{ person.name }}<br/>
-</div>
-{% endfor %}
-{% endfor %}
-<h2>Assignee list</h2> 
 {% for person in persons %}
-<div>
-{{ person.name }} - {{ person.task_count }} tasks:
+<li class="list-group-item">
+{{ person.name }} - {{ person.task_points }}
+{% for assignment in person.assignments %}
+<span class="badge badge-success">{{ assignment.task.name }}</span>
+{% endfor %}
+</li>
+{% endfor %}
+</ul>
 </div>
-{% for task in person.tasks %}
-{{ task.name }}
-{% endfor %}
 
-{% endfor %}
 {% endblock %}

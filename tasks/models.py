@@ -26,6 +26,7 @@ class Task(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, validators=[MinLengthValidator(3)])
     description = models.TextField(blank=True)
+    points = models.IntegerField(default=100)
     min_assignees = models.PositiveIntegerField(default=1, help_text="Minimum number of assignees for the task")
     required_tags = models.ManyToManyField(Tag, blank=True, help_text="Tags required for task assignees")
 
@@ -49,3 +50,15 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+
+class Assignment(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+
+    @property
+    def event(self):
+        return self.task.event
+
+    def __str__(self):
+        return self.task.name + " -> " + self.person.name
+
