@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-06 21:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: tasks/models.py:7 tasks/models.py:24 tasks/models.py:34 tasks/models.py:52
+#: tasks/templates/tasks/register.html:13
+msgid "Name"
+msgstr "Nimi"
+
+#: tasks/models.py:9 tasks/models.py:25 tasks/models.py:35
+msgid "Description"
+msgstr "Kuvaus"
+
+#: tasks/models.py:10
+msgid "Active"
+msgstr "Aktiivinen"
+
+#: tasks/models.py:10
+msgid "Set to true to allow registration"
+msgstr "Ilmoittautuminen auki"
+
+#: tasks/models.py:11
+msgid "Secret question"
+msgstr "Kysymys ilmoittautujille"
+
+#: tasks/models.py:11
+msgid "Question to ask for registration"
+msgstr "Kysymys ilmoittautujille, jätä tyhjäksi jos ei tarvita."
+
+#: tasks/models.py:12
+msgid "Secret answer"
+msgstr "Vastaus kysymykseen"
+
+#: tasks/models.py:12
+msgid "Answer to secret question"
+msgstr "Oikea vastaus kysymykseen"
+
+#: tasks/models.py:13
+msgid "Public tasks"
+msgstr "Julkiset nakit"
+
+#: tasks/models.py:13
+msgid "Show tasks in public views"
+msgstr "Näytetäänkö nakit julkisesti"
+
+#: tasks/models.py:14
+msgid "Ask e-mail"
+msgstr "Kysy sähköpostiosoite"
+
+#: tasks/models.py:14
+msgid "Ask email address in registration"
+msgstr "Kysytäänkö ilmoittautumisessa sähköpostiosoitetta"
+
+#: tasks/models.py:15
+msgid "Ask phone"
+msgstr "Kysy puhelinnumero"
+
+#: tasks/models.py:15
+msgid "Ask phone number in registration"
+msgstr "Kysytäänkö ilmoittautumisessa puhelinnumero"
+
+#: tasks/models.py:19
+msgid "Event"
+msgstr "Tapahtuma"
+
+#: tasks/models.py:20
+msgid "Events"
+msgstr "Tapahtumaa"
+
+#: tasks/models.py:29
+msgid "Tag"
+msgstr "Ominaisuus"
+
+#: tasks/models.py:30 tasks/models.py:55
+msgid "Tags"
+msgstr "Ominaisuutta"
+
+#: tasks/models.py:36
+msgid "Points"
+msgstr "Pisteet"
+
+#: tasks/models.py:37
+msgid "Minimum assignees"
+msgstr "Nakitettavien määrä"
+
+#: tasks/models.py:37
+msgid "Minimum number of assignees for the task"
+msgstr "Nakitettavien vähimmäismäärä"
+
+#: tasks/models.py:38
+msgid "Required tags"
+msgstr "Vaaditut ominaisuudet"
+
+#: tasks/models.py:38
+msgid "Tags required for task assignees"
+msgstr "Nakitettaville pakolliset ominaisuudet"
+
+#: tasks/models.py:47
+msgid "Task"
+msgstr "Nakki"
+
+#: tasks/models.py:48
+msgid "Tasks"
+msgstr "Nakkia"
+
+#: tasks/models.py:53 tasks/templates/tasks/register.html:18
+#: tasks/templates/tasks/register.html:19
+msgid "E-mail"
+msgstr "Sähköpostiosoite"
+
+#: tasks/models.py:54
+msgid "Phone"
+msgstr "Puhelinnumero"
+
+#: tasks/models.py:55
+msgid "Tags for this person"
+msgstr "Ilmoittautuneen ominaisuudet"
+
+#: tasks/models.py:64
+msgid "Person"
+msgstr "Ilmoittautunut"
+
+#: tasks/models.py:65
+msgid "Persons"
+msgstr "Ilmoittautuneita"
+
+#: tasks/models.py:79
+msgid "Assignment"
+msgstr "Nakitus"
+
+#: tasks/models.py:80
+msgid "Assignments"
+msgstr "Nakituksia"
+
+#: tasks/templates/registration/login.html:6
+msgid "Your username and password didn't match. Please try again."
+msgstr "Käyttäjätunnus tai salasana väärin. Yritä paremmin."
+
+#: tasks/templates/registration/login.html:14
+msgid "Please login to see this page."
+msgstr "Kirjaudu sisään nähdäksesi tämän sivun."
+
+#: tasks/templates/registration/login.html:31
+msgid "Login"
+msgstr "Kirjaudu"
+
+#: tasks/templates/tasks/base.html:24
+msgid "All events"
+msgstr "Tapahtumat"
+
+#: tasks/templates/tasks/base.html:33
+msgid "Logged in as"
+msgstr "Kirjautuneena käyttäjänä"
+
+#: tasks/templates/tasks/base.html:34
+msgid "Log out"
+msgstr "Kirjaudu ulos"
+
+#: tasks/templates/tasks/base.html:35
+msgid "Manage events"
+msgstr "Hallinnoi tapahtumia"
+
+#: tasks/templates/tasks/base.html:38
+msgid "For admins:"
+msgstr "Ylläpitäjille:"
+
+#: tasks/templates/tasks/base.html:38
+msgid "log in"
+msgstr "Kirjaudu sisään"
+
+#: tasks/templates/tasks/components/task.html:10
+msgid "Assignees:"
+msgstr "Nakitetut:"
+
+#: tasks/templates/tasks/components/task.html:14
+msgid "points"
+msgstr "pistettä"
+
+#: tasks/templates/tasks/components/task.html:36
+msgid "Can't find people to complete task!"
+msgstr "Ei tarpeeksi osallistujia nakin tekemiseen!"
+
+#: tasks/templates/tasks/event.html:13 tasks/templates/tasks/index.html:19
+#: tasks/templates/tasks/register.html:49
+msgid "Register"
+msgstr "Ilmoittaudu"
+
+#: tasks/templates/tasks/event.html:15 tasks/templates/tasks/event.html:23
+#: tasks/templates/tasks/tasklist.html:9
+msgid "Task list"
+msgstr "Nakkilista"
+
+#: tasks/templates/tasks/index.html:6
+msgid "Welcome to Nakkisade event organizing"
+msgstr "Tervetuloa nakkisateeseen"
+
+#: tasks/templates/tasks/index.html:7
+msgid "Choose event"
+msgstr "Valitse tapahtuma"
+
+#: tasks/templates/tasks/index.html:18
+msgid "Information"
+msgstr "Lisätietoja"
+
+#: tasks/templates/tasks/index.html:25
+msgid "No events are available"
+msgstr "Ei tapahtumia avoinna"
+
+#: tasks/templates/tasks/index.html:25
+msgid "add them as admin"
+msgstr "lisää niitä ylläpitäjänä"
+
+#: tasks/templates/tasks/register.html:5
+msgid "Register to"
+msgstr "Ilmoittaudu tapahtumaan"
+
+#: tasks/templates/tasks/register.html:20
+msgid "We'll never share your email with anyone else."
+msgstr "Emme jakele sähköpostiosoitteita ulkopuolisille"
+
+#: tasks/templates/tasks/register.html:25
+msgid "Phone number"
+msgstr "Puhelinnumero"
+
+#: tasks/templates/tasks/tasklist.html:7
+msgid "Reassign tasks"
+msgstr "Nakita kaikki uudelleen"
+
+#: tasks/templates/tasks/tasklist.html:14
+#: tasks/templates/tasks/tasklist.html:17
+msgid "Assignee list"
+msgstr "Nakitetut"
+
+#: tasks/templates/tasks/thanks.html:4
+msgid "Registration successful, thanks!"
+msgstr "Ilmoittautuminen onnistui, kiitoksia!"
+
+#: tasks/views.py:33
+msgid "Wrong answer to secret question!"
+msgstr "Väärä vastaus kysymykseen!"
+
+#: tasks/views.py:53
+msgid "Event not active"
+msgstr "Tapahtuma ei tällä hetkellä auki"
+
+#: tasks/views.py:56
+msgid "Event does not exist"
+msgstr "Tapahtumaa ei ole"
+
+#: tasks/views.py:61 tasks/views.py:110
+msgid "Must be logged in for this operation!"
+msgstr "Tätä varten täytyy olla kirjautuneena"
+
+#: tasks/views.py:114
+msgid "Must have at least one person!"
+msgstr "Täytyy olla vähintään yksi ilmoittautunut!"
+
+#: tasks/views.py:116
+msgid "Must have at least one task!"
+msgstr "Täytyy olla vähintään yksi nakki!"

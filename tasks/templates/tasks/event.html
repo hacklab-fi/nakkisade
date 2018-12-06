@@ -1,4 +1,5 @@
 {% extends "tasks/base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="card">
     <div class="card-body">
@@ -9,9 +10,9 @@
         {% if event.url %}
         <a href="{{ event.url }}" class="card-link">{{ event.url }}</a>
         {% endif %}
-        <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">Register</a></li></p>
+        <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">{% trans "Register" %}</a></li></p>
         {% if user.is_authenticated %}
-            <a href="{%url 'tasks:tasklist' event.id %}" class="btn btn-warning">View task list</a>
+            <a href="{%url 'tasks:tasklist' event.id %}" class="btn btn-warning">{% trans "Task list" %}</a>
         {% endif %}
         </div>
 </div>
@@ -19,7 +20,7 @@
 {% if event.public_tasks %}
 <div class="card">
     <div class="card-header">
-        Tasks
+        {% trans "Task list" %}
     </div>
     <ul class="list-group list-group-flush">
     {% for task in event.task_set.all %}

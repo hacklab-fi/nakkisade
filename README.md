@@ -2,12 +2,12 @@
 
 Event registration and task assigning tool
 
-Status: alpha
+Status: beta
 
-## What it does?
+## What it does
 
 Nakkisade is intended for event organizers. Especially events in which volunteer
-participants do some tasks such as hackathons, demoparties, underground raves, 
+participants do some tasks such as hackathons, demoparties, underground raves,
 small festivals etc.
 
 It does two things:
@@ -25,16 +25,28 @@ When administrator wants, nakkisade can generate a list of tasks and persons
 who they are assigned. The tags are used to filter who can do what and tasks
 are shared as evenly as possible.
 
-In the end admin can print out a report of tasks and their assignees, and 
+In the end admin can print out a report of tasks and their assignees, and
 task lists for individuals.
 
-## Running
+## Running in Docker
+
+The easiest way to run nakkisade is with docker. It takes admin credentials
+as env variables:
+
+```bash
+docker image build . --name nakkisade
+docker run -e ADMIN_USER=admin -e ADMIN_EMAIL=nakkisadeadmin@your.host -e ADMIN_PASSWORD=adminpassword  --name nakkisade -d nakkisade
+```
+
+## Running on host
 
 Like any django app
-```
+
+```bash
 ./manage.py makemigrations tasks
 ./manage.py migrate
 ./manage.py createsuperuser
+django-admin compilemessages
 ```
 
 Use the admin interface to create events, tasks and tags.
@@ -45,3 +57,12 @@ http://127.0.0.1:8000/admin/
 http://127.0.0.1:8000/tasks/
 
 To generate task list, log in to app using the login link (use the admin account). 
+
+## Developer stuff
+
+To generate languages:
+
+```bash
+django-admin makemessages -l fi
+django-admin compilemessages
+```

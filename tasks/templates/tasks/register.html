@@ -1,8 +1,8 @@
 {% extends "tasks/base.html" %}
-
+{% load i18n %}
 {% block content %}
 <div class="panel panel-primary">
-<div class="panel-heading">Register to <a href="{% url 'tasks:event' event.id %}">{{ event }}</a></div>
+<div class="panel-heading">{% trans "Register to" %} <a href="{% url 'tasks:event' event.id %}">{{ event }}</a></div>
 <div class="panel-body">
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -10,10 +10,29 @@
 {% csrf_token %}
 <fieldset>
 <div class="form-group">
-<label for="name">Name</label>
+<label for="name">{% trans "Name" %}</label>
 <input type="text" name="name" id="name" class="form-control">
 </div>
-Tags<br/>
+{% if event.ask_email %}
+  <div class="form-group">
+  <label for="exampleInputEmail1">{% trans "E-mail" %}</label>
+  <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="{% trans "E-mail" %}">
+  <small id="emailHelp" class="form-text text-muted">{% trans "We'll never share your email with anyone else." %}</small>
+  </div>
+{% endif %}
+{% if event.ask_phone %}
+  <div class="form-group">
+  <label for="phone">{% trans "Phone number" %}</label>
+  <input type="text" name="phone" id="phone" class="form-control">
+  </div>
+{% endif %}
+{% if event.secret_question %}
+  <div class="form-group">
+  <label for="secret">{{ event.secret_question }}</label>
+  <input type="text" name="secret" id="secret" class="form-control">
+  </div>
+{% endif %}
+<br/>
 <div>
 {% for tag in event.tag_set.all %}
 <div class="card">
@@ -27,7 +46,7 @@ Tags<br/>
 {% endfor %}
 </div>
 <br/>
-<input type="submit" value="Register" class="btn btn-primary">
+<input type="submit" value="{% trans "Register" %}" class="btn btn-primary">
 </fieldset>
 </form>
 </div>

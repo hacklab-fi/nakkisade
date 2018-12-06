@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
+from django.utils.translation import gettext as _
 from django.db.models import Count
 from .models import Event, Person, Task, Assignment
 from operator import attrgetter
@@ -11,29 +12,30 @@ def index(request):
     return render(request, 'tasks/index.html', context)
 
 def event(request, event_id):
-    try:
-        event = Event.objects.get(pk=event_id)
-    except Event.DoesNotExist:
-        raise Http404("Event does not exist")
-    if not event.active:
-        raise Http404("Event does not exist")
-    return render(request, 'tasks/event.html', {'event': event})
+    return render(request, 'tasks/event.html', {'event': check_event(event_id)})
 
 def register(request, event_id):
-    try:
-        event = Event.objects.get(pk=event_id)
-    except Event.DoesNotExist:
-        raise Http404("Event does not exist")
-    if not event.active:
-        raise Http404("Event does not exist")
-    return render(request, 'tasks/register.html', {'event': event})
+    return render(request, 'tasks/register.html', {'event': check_event(event_id)})
+
+def check_secret(request, event_id):
+    event = check_event(event_id)
+    if event.secret_question:
+        secret = request.POST['secret'].strip().lower()
+        if secret != event.secret_answer.lower():
+            return "False"
+    return "True"
 
 def addperson(request, event_id):
+    event = check_event(event_id)
+    if event.secret_question:
+        secret = request.POST['secret'].strip().lower()
+        if secret != event.secret_answer.lower():
+            return render(request, 'tasks/register.html', {'event': check_event(event_id), 'error_message': _("Wrong answer to secret question!")})
+
     name = request.POST['name']
-    event = Event.objects.get(pk=event_id)
-    if not event.active:
-        raise Http404("Event not active")
-    person = Person(name = name, event = event)
+    email = request.POST['email'] if event.ask_email else None
+    phone = request.POST['phone'] if event.ask_phone else None
+    person = Person(name = name, email = email, phone=phone, event = event)
     person.full_clean()
     selected_tags = request.POST.getlist('tag')
     person.save()
@@ -43,20 +45,20 @@ def addperson(request, event_id):
     person.save()
     return render(request, 'tasks/thanks.html')
 
-
+# Returns event for given id if it exists and is active
 def check_event(event_id):
     try:
         event = Event.objects.get(pk=event_id)
+        if not event.active:
+            raise Http404(_("Event not active"))
+        return event
     except Event.DoesNotExist:
-        raise Http404("Event does not exist")
-    if not event.active:
-        raise Http404("Event not active")
-    return event
+        raise Http404(_("Event does not exist"))
 
 def tasklist(request, event_id):
     event = check_event(event_id)
     if not request.user.is_authenticated:
-        return render(request, 'tasks/event.html', {'event': event, 'error_message': "Must be logged in for this operation!"})
+        return render(request, 'tasks/event.html', {'event': event, 'error_message': _("Must be logged in for this operation!")})
     tasks = Task.objects.filter(event=event)
     persons = Person.objects.filter(event=event)
 
@@ -105,13 +107,13 @@ def list_persons_available_for(task, persons):
 def create_tasks(request, event_id):
     event = check_event(event_id)
     if not request.user.is_authenticated:
-        return render(request, 'tasks/event.html', {'event': event, 'error_message': "Must be logged in for this operation!"})
+        return render(request, 'tasks/event.html', {'event': event, 'error_message': _("Must be logged in for this operation!")})
     tasks = Task.objects.filter(event=event).annotate(num_tags=Count('required_tags')).order_by('-num_tags')
     persons = Person.objects.filter(event=event)
     if len(persons) == 0:
-        return render(request, 'tasks/event.html', {'event': event, 'error_message': "Must have at least one person!"})
+        return render(request, 'tasks/event.html', {'event': event, 'error_message': _("Must have at least one person!")})
     if len(tasks) == 0:
-        return render(request, 'tasks/event.html', {'event': event, 'error_message': "Must have at least one task!"})
+        return render(request, 'tasks/event.html', {'event': event, 'error_message': _("Must have at least one task!")})
 
     # Clear assignments
     # Assignment.objects.filter(task__event=event).delete()

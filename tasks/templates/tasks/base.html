@@ -1,3 +1,4 @@
+{% load i18n %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,21 +21,23 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{%url 'tasks:index' %}">All events</a></li>
+              <li class="breadcrumb-item"><a href="{%url 'tasks:index' %}">{% trans "All events" %}</a></li>
               {% if event %}
               <li class="breadcrumb-item active" aria-current="page">{{ event }}</li>
               {% endif %}
             </ol>
           </nav>
-
         {% block content %}{% endblock %}
 
         {% if user.is_authenticated %}
-        <p>Logged in as {{ user.username }}. <a href="{%url 'logout' %}">log out</a></p>
+        <p>{% trans "Logged in as" %} {{ user.username }}. 
+          <a href="{%url 'logout' %}">{% trans "Log out" %}</a> | 
+          <a href="../admin">{% trans "Manage events" %}</a>
+        </p>
         {% else %}
-        <p>For admins: <a href="{%url 'login' %}">log in</a>.</p>
+        <p>{% trans "For admins:" %} <a href="{%url 'login' %}">{% trans "log in" %}</a>.</p>
         {% endif %}
+        {% include "tasks/components/languageselector.html" %}
     </div>
-
   </body>
 </html>

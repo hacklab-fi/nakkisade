@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load gravatar %}
 <div class="card">
     <div class="card-header">{{ task.name }}</div>
     <ul class="list-group list-group-flush">
@@ -5,11 +7,11 @@
         {% if not task.complete %}
             <font color="red">
         {% endif %}
-        {{ task.assigned|length }}/{{ task.min_assignees }} assignees,
+        {% trans "Assignees:" %} {{ task.assigned|length }}/{{ task.min_assignees }}
         {% if not task.complete %}
             </font>
         {% endif %}
-        {{ task.points }} points.
+        {{ task.points }} {% trans "points" %}.
         {% if task.required_tags.all %}
             {% for tag in task.required_tags.all %}
             <span class="badge badge-primary">{{ tag.name }}</span>
@@ -27,11 +29,11 @@
             <div class="card">
                 <ul class="list-group list-group-flush">
                 {% for person in task.assigned %}
-                    <li class="list-group-item">{{ person.name }}</li>
+                    <li class="list-group-item">{% gravatar person.email 50 person.email %} {{ person.name }}</li>
                 {% endfor %}
                 </ul>
             </div>
-            {% if task.failed %} <font color="red">Can't find people to complete task!</font><br/> {% endif %}
+            {% if task.failed %} <font color="red">{% trans "Can't find people to complete task!" %}</font><br/> {% endif %}
         </div>
     </div>
 </div>

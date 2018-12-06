@@ -1,24 +1,26 @@
 {% extends "tasks/base.html" %}
+{% load i18n %}
+{% load gravatar %}
 {% block content %}
 <h1> {{ event }} </h1>
 {% if user.is_authenticated %}
-<p><a href="{% url 'tasks:create_tasks' event.id %}" class="btn btn-info">Reassign tasks</a></li></p>
+<p><a href="{% url 'tasks:create_tasks' event.id %}" class="btn btn-info">{% trans "Reassign tasks" %}</a></li></p>
 {% endif %}
-<h2>Tasks</h2>
+<h2>{% trans "Task list" %}</h2>
 {% for task in tasks %}
 {% include "tasks/components/task.html" %}
 <br/>
 {% endfor %}
-<h2>Assignees</h2> 
+<h2>{% trans "Assignee list" %}</h2> 
 <div class="card">
 <div class="card-header">
-    Assignees
+    {% trans "Assignee list" %}
 </div>
 <ul class="list-group list-group-flush">
 
 {% for person in persons %}
 <li class="list-group-item">
-{{ person.name }} - {{ person.task_points }}
+{% gravatar person.email 50 person.email %} {{ person.name }} - {{ person.task_points }}
 {% for assignment in person.assignments %}
 <span class="badge badge-success">{{ assignment.task.name }}</span>
 {% endfor %}
