@@ -17,20 +17,20 @@ class Event(models.Model):
         return self.name
     class Meta:
        verbose_name = _('Event')
-       verbose_name_plural = _('Events')
+       verbose_name_plural = _('Events_')
 
 class Tag(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, verbose_name=_('Event'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Name'), max_length=200, validators=[MinLengthValidator(3)])
     description = models.TextField(verbose_name=_('Description'), blank=True)
     def __str__(self):
         return self.event.name + "/" + self.name
     class Meta:
        verbose_name = _('Tag')
-       verbose_name_plural = _('Tags')
+       verbose_name_plural = _('Tags_')
 
 class Task(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, verbose_name=_('Event'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Name'), max_length=200, validators=[MinLengthValidator(3)])
     description = models.TextField(verbose_name=_('Description'), blank=True)
     points = models.IntegerField(verbose_name=_('Points'), default=100)
@@ -45,10 +45,10 @@ class Task(models.Model):
         return self.event.name + "/" + self.name
     class Meta:
        verbose_name = _('Task')
-       verbose_name_plural = _('Tasks')
+       verbose_name_plural = _('Tasks_')
 
 class Person(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, verbose_name=_('Event'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Name'), max_length=200, unique=True, validators=[MinLengthValidator(3)])
     email = models.CharField(verbose_name=_('E-mail'), max_length=100, blank=True)
     phone = models.CharField(verbose_name=_('Phone'), max_length=100, blank=True)
@@ -62,7 +62,7 @@ class Person(models.Model):
         return self.name
     class Meta:
        verbose_name = _('Person')
-       verbose_name_plural = _('Persons')
+       verbose_name_plural = _('Persons_')
 
 class Assignment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
@@ -77,4 +77,4 @@ class Assignment(models.Model):
 
     class Meta:
        verbose_name = _('Assignment')
-       verbose_name_plural = _('Assignments')
+       verbose_name_plural = _('Assignments_')

@@ -11,9 +11,8 @@ services:
     container_name: nakkisade
     command: python3 manage.py runserver 0.0.0.0:8000 
     volumes:
-     - .:/code 
+     - ./db.sqlite:/code/db.sqlite
     ports:
      - "8000:8000"
     networks:
       - default
-

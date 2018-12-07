@@ -21,260 +21,260 @@ msgstr ""
 #: tasks/models.py:7 tasks/models.py:24 tasks/models.py:34 tasks/models.py:52
 #: tasks/templates/tasks/register.html:13
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
 #: tasks/models.py:9 tasks/models.py:25 tasks/models.py:35
 msgid "Description"
-msgstr "Kuvaus"
+msgstr ""
 
 #: tasks/models.py:10
 msgid "Active"
-msgstr "Aktiivinen"
+msgstr ""
 
 #: tasks/models.py:10
 msgid "Set to true to allow registration"
-msgstr "Ilmoittautuminen auki"
+msgstr ""
 
 #: tasks/models.py:11
 msgid "Secret question"
-msgstr "Kysymys ilmoittautujille"
+msgstr ""
 
 #: tasks/models.py:11
 msgid "Question to ask for registration"
-msgstr "Kysymys ilmoittautujille, jätä tyhjäksi jos ei tarvita."
+msgstr ""
 
 #: tasks/models.py:12
 msgid "Secret answer"
-msgstr "Vastaus kysymykseen"
+msgstr ""
 
 #: tasks/models.py:12
 msgid "Answer to secret question"
-msgstr "Oikea vastaus kysymykseen"
+msgstr ""
 
 #: tasks/models.py:13
 msgid "Public tasks"
-msgstr "Julkiset nakit"
+msgstr ""
 
 #: tasks/models.py:13
 msgid "Show tasks in public views"
-msgstr "Näytetäänkö nakit julkisesti"
+msgstr ""
 
 #: tasks/models.py:14
 msgid "Ask e-mail"
-msgstr "Kysy sähköpostiosoite"
+msgstr ""
 
 #: tasks/models.py:14
 msgid "Ask email address in registration"
-msgstr "Kysytäänkö ilmoittautumisessa sähköpostiosoitetta"
+msgstr ""
 
 #: tasks/models.py:15
 msgid "Ask phone"
-msgstr "Kysy puhelinnumero"
+msgstr ""
 
 #: tasks/models.py:15
 msgid "Ask phone number in registration"
-msgstr "Kysytäänkö ilmoittautumisessa puhelinnumero"
+msgstr ""
 
 #: tasks/models.py:19 tasks/models.py:23 tasks/models.py:33 tasks/models.py:51
 msgid "Event"
-msgstr "Tapahtuma"
+msgstr ""
 
 #: tasks/models.py:20
 msgid "Events_"
-msgstr "Tapahtumat"
+msgstr "Events"
 
 #: tasks/models.py:29
 msgid "Tag"
-msgstr "Ominaisuus"
+msgstr ""
 
 #: tasks/models.py:30
 msgid "Tags_"
-msgstr "Ominaisuudet"
+msgstr "Tags"
 
 #: tasks/models.py:36
 msgid "Points"
-msgstr "Pisteet"
+msgstr ""
 
 #: tasks/models.py:37
 msgid "Minimum assignees"
-msgstr "Nakitettavien määrä"
+msgstr ""
 
 #: tasks/models.py:37
 msgid "Minimum number of assignees for the task"
-msgstr "Nakitettavien vähimmäismäärä"
+msgstr ""
 
 #: tasks/models.py:38
 msgid "Required tags"
-msgstr "Vaaditut ominaisuudet"
+msgstr ""
 
 #: tasks/models.py:38
 msgid "Tags required for task assignees"
-msgstr "Nakitettaville pakolliset ominaisuudet"
+msgstr ""
 
 #: tasks/models.py:47
 msgid "Task"
-msgstr "Nakki"
+msgstr ""
 
 #: tasks/models.py:48
 msgid "Tasks_"
-msgstr "Nakit"
+msgstr "Tasks"
 
 #: tasks/models.py:53 tasks/templates/tasks/register.html:18
 #: tasks/templates/tasks/register.html:19
 msgid "E-mail"
-msgstr "Sähköpostiosoite"
+msgstr ""
 
 #: tasks/models.py:54
 msgid "Phone"
-msgstr "Puhelinnumero"
+msgstr ""
 
 #: tasks/models.py:55
 msgid "Tags"
-msgstr "Ominaisuudet"
+msgstr ""
 
 #: tasks/models.py:55
 msgid "Tags for this person"
-msgstr "Ilmoittautuneen ominaisuudet"
+msgstr ""
 
 #: tasks/models.py:64
 msgid "Person"
-msgstr "Ilmoittautunut"
+msgstr ""
 
 #: tasks/models.py:65
 msgid "Persons_"
-msgstr "Ilmoittautuneet"
+msgstr "Persons"
 
 #: tasks/models.py:79
 msgid "Assignment"
-msgstr "Nakitus"
+msgstr ""
 
 #: tasks/models.py:80
 msgid "Assignments_"
-msgstr "Nakitusta"
+msgstr "Assignments"
 
 #: tasks/templates/registration/login.html:6
 msgid "Your username and password didn't match. Please try again."
-msgstr "Käyttäjätunnus tai salasana väärin. Yritä paremmin."
+msgstr ""
 
 #: tasks/templates/registration/login.html:14
 msgid "Please login to see this page."
-msgstr "Kirjaudu sisään nähdäksesi tämän sivun."
+msgstr ""
 
 #: tasks/templates/registration/login.html:31
 msgid "Login"
-msgstr "Kirjaudu"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:24
 msgid "All events"
-msgstr "Tapahtumat"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:33
 msgid "Logged in as"
-msgstr "Kirjautuneena käyttäjänä"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:34
 msgid "Log out"
-msgstr "Kirjaudu ulos"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:35
 msgid "Manage events"
-msgstr "Hallinnoi tapahtumia"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:38
 msgid "For admins:"
-msgstr "Ylläpitäjille:"
+msgstr ""
 
 #: tasks/templates/tasks/base.html:38
 msgid "log in"
-msgstr "Kirjaudu sisään"
+msgstr ""
 
 #: tasks/templates/tasks/components/task.html:10
 msgid "Assignees:"
-msgstr "Nakitetut:"
+msgstr ""
 
 #: tasks/templates/tasks/components/task.html:14
 msgid "points"
-msgstr "pistettä"
+msgstr ""
 
 #: tasks/templates/tasks/components/task.html:36
 msgid "Can't find people to complete task!"
-msgstr "Ei tarpeeksi osallistujia nakin tekemiseen!"
+msgstr ""
 
 #: tasks/templates/tasks/event.html:13 tasks/templates/tasks/index.html:19
 #: tasks/templates/tasks/register.html:49
 msgid "Register"
-msgstr "Ilmoittaudu"
+msgstr ""
 
 #: tasks/templates/tasks/event.html:15 tasks/templates/tasks/event.html:23
 #: tasks/templates/tasks/tasklist.html:9
 msgid "Task list"
-msgstr "Nakkilista"
+msgstr ""
 
 #: tasks/templates/tasks/index.html:6
 msgid "Welcome to Nakkisade event organizing"
-msgstr "Tervetuloa nakkisateeseen"
+msgstr ""
 
 #: tasks/templates/tasks/index.html:7
 msgid "Choose event"
-msgstr "Valitse tapahtuma"
+msgstr ""
 
 #: tasks/templates/tasks/index.html:18
 msgid "Information"
-msgstr "Lisätietoja"
+msgstr ""
 
 #: tasks/templates/tasks/index.html:25
 msgid "No events are available"
-msgstr "Ei tapahtumia avoinna"
+msgstr ""
 
 #: tasks/templates/tasks/index.html:25
 msgid "add them as admin"
-msgstr "lisää niitä ylläpitäjänä"
+msgstr ""
 
 #: tasks/templates/tasks/register.html:5
 msgid "Register to"
-msgstr "Ilmoittaudu tapahtumaan"
+msgstr ""
 
 #: tasks/templates/tasks/register.html:20
 msgid "We'll never share your email with anyone else."
-msgstr "Emme jakele sähköpostiosoitteita ulkopuolisille"
+msgstr ""
 
 #: tasks/templates/tasks/register.html:25
 msgid "Phone number"
-msgstr "Puhelinnumero"
+msgstr ""
 
 #: tasks/templates/tasks/tasklist.html:7
 msgid "Reassign tasks"
-msgstr "Nakita kaikki uudelleen"
+msgstr ""
 
 #: tasks/templates/tasks/tasklist.html:14
 #: tasks/templates/tasks/tasklist.html:17
 msgid "Assignee list"
-msgstr "Nakitetut"
+msgstr ""
 
 #: tasks/templates/tasks/thanks.html:4
 msgid "Registration successful, thanks!"
-msgstr "Ilmoittautuminen onnistui, kiitoksia!"
+msgstr ""
 
 #: tasks/views.py:33
 msgid "Wrong answer to secret question!"
-msgstr "Väärä vastaus kysymykseen!"
+msgstr ""
 
 #: tasks/views.py:53
 msgid "Event not active"
-msgstr "Tapahtuma ei tällä hetkellä auki"
+msgstr ""
 
 #: tasks/views.py:56
 msgid "Event does not exist"
-msgstr "Tapahtumaa ei ole"
+msgstr ""
 
 #: tasks/views.py:61 tasks/views.py:110
 msgid "Must be logged in for this operation!"
-msgstr "Tätä varten täytyy olla kirjautuneena"
+msgstr ""
 
 #: tasks/views.py:114
 msgid "Must have at least one person!"
-msgstr "Täytyy olla vähintään yksi ilmoittautunut!"
+msgstr ""
 
 #: tasks/views.py:116
 msgid "Must have at least one task!"
-msgstr "Täytyy olla vähintään yksi nakki!"
+msgstr ""
