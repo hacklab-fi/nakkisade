@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinLengthValidator
 from django.forms import CheckboxSelectMultiple
 from django.utils.translation import gettext as _
+import uuid
 
 class Event(models.Model):
     name = models.CharField(verbose_name=_('Name'), max_length=200, unique=True, validators=[MinLengthValidator(3)])
@@ -53,6 +54,7 @@ class Person(models.Model):
     email = models.CharField(verbose_name=_('E-mail'), max_length=100, null=True, blank=True)
     phone = models.CharField(verbose_name=_('Phone'), max_length=100, null=True, blank=True)
     tags = models.ManyToManyField(Tag, verbose_name=_('Tags'), blank=True, help_text=_("Tags for this person"))
+    modifycode = models.UUIDField(verbose_name=_('Modification code'), default=uuid.uuid4, editable=False)
 
     formfield_overrides = {
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},

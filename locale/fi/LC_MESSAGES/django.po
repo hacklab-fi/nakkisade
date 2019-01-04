@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-07 23:28+0200\n"
+"POT-Creation-Date: 2019-01-04 16:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,137 +18,141 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: tasks/models.py:7 tasks/models.py:24 tasks/models.py:34 tasks/models.py:52
+#: tasks/models.py:8 tasks/models.py:25 tasks/models.py:35 tasks/models.py:53
 #: tasks/templates/tasks/register.html:13
 msgid "Name"
 msgstr "Nimi"
 
-#: tasks/models.py:9 tasks/models.py:25 tasks/models.py:35
+#: tasks/models.py:10 tasks/models.py:26 tasks/models.py:36
 msgid "Description"
 msgstr "Kuvaus"
 
-#: tasks/models.py:10
+#: tasks/models.py:11
 msgid "Active"
 msgstr "Aktiivinen"
 
-#: tasks/models.py:10
+#: tasks/models.py:11
 msgid "Set to true to allow registration"
 msgstr "Ilmoittautuminen auki"
 
-#: tasks/models.py:11
+#: tasks/models.py:12
 msgid "Secret question"
 msgstr "Kysymys ilmoittautujille"
 
-#: tasks/models.py:11
+#: tasks/models.py:12
 msgid "Question to ask for registration"
 msgstr "Kysymys ilmoittautujille, jätä tyhjäksi jos ei tarvita."
 
-#: tasks/models.py:12
+#: tasks/models.py:13
 msgid "Secret answer"
 msgstr "Vastaus kysymykseen"
 
-#: tasks/models.py:12
+#: tasks/models.py:13
 msgid "Answer to secret question"
 msgstr "Oikea vastaus kysymykseen"
 
-#: tasks/models.py:13
+#: tasks/models.py:14
 msgid "Public tasks"
 msgstr "Julkiset nakit"
 
-#: tasks/models.py:13
+#: tasks/models.py:14
 msgid "Show tasks in public views"
 msgstr "Näytetäänkö nakit julkisesti"
 
-#: tasks/models.py:14
+#: tasks/models.py:15
 msgid "Ask e-mail"
 msgstr "Kysy sähköpostiosoite"
 
-#: tasks/models.py:14
+#: tasks/models.py:15
 msgid "Ask email address in registration"
 msgstr "Kysytäänkö ilmoittautumisessa sähköpostiosoitetta"
 
-#: tasks/models.py:15
+#: tasks/models.py:16
 msgid "Ask phone"
 msgstr "Kysy puhelinnumero"
 
-#: tasks/models.py:15
+#: tasks/models.py:16
 msgid "Ask phone number in registration"
 msgstr "Kysytäänkö ilmoittautumisessa puhelinnumero"
 
-#: tasks/models.py:19 tasks/models.py:23 tasks/models.py:33 tasks/models.py:51
+#: tasks/models.py:20 tasks/models.py:24 tasks/models.py:34 tasks/models.py:52
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: tasks/models.py:20
+#: tasks/models.py:21
 msgid "Events_"
 msgstr "Tapahtumat"
 
-#: tasks/models.py:29
+#: tasks/models.py:30
 msgid "Tag"
 msgstr "Ominaisuus"
 
-#: tasks/models.py:30
+#: tasks/models.py:31
 msgid "Tags_"
 msgstr "Ominaisuudet"
 
-#: tasks/models.py:36
+#: tasks/models.py:37
 msgid "Points"
 msgstr "Pisteet"
 
-#: tasks/models.py:37
+#: tasks/models.py:38
 msgid "Minimum assignees"
 msgstr "Nakitettavien määrä"
 
-#: tasks/models.py:37
+#: tasks/models.py:38
 msgid "Minimum number of assignees for the task"
 msgstr "Nakitettavien vähimmäismäärä"
 
-#: tasks/models.py:38
+#: tasks/models.py:39
 msgid "Required tags"
 msgstr "Vaaditut ominaisuudet"
 
-#: tasks/models.py:38
+#: tasks/models.py:39
 msgid "Tags required for task assignees"
 msgstr "Nakitettaville pakolliset ominaisuudet"
 
-#: tasks/models.py:47
+#: tasks/models.py:48
 msgid "Task"
 msgstr "Nakki"
 
-#: tasks/models.py:48
+#: tasks/models.py:49
 msgid "Tasks_"
 msgstr "Nakit"
 
-#: tasks/models.py:53 tasks/templates/tasks/register.html:18
+#: tasks/models.py:54 tasks/templates/tasks/register.html:18
 #: tasks/templates/tasks/register.html:19
 msgid "E-mail"
 msgstr "Sähköpostiosoite"
 
-#: tasks/models.py:54
+#: tasks/models.py:55
 msgid "Phone"
 msgstr "Puhelinnumero"
 
-#: tasks/models.py:55
+#: tasks/models.py:56
 msgid "Tags"
 msgstr "Ominaisuudet"
 
-#: tasks/models.py:55
+#: tasks/models.py:56
 msgid "Tags for this person"
 msgstr "Ilmoittautuneen ominaisuudet"
 
-#: tasks/models.py:64
+#: tasks/models.py:57
+msgid "Modification code"
+msgstr ""
+
+#: tasks/models.py:66
 msgid "Person"
 msgstr "Ilmoittautunut"
 
-#: tasks/models.py:65
+#: tasks/models.py:67
 msgid "Persons_"
 msgstr "Ilmoittautuneet"
 
-#: tasks/models.py:79
+#: tasks/models.py:81
 msgid "Assignment"
 msgstr "Nakitus"
 
-#: tasks/models.py:80
+#: tasks/models.py:82
 msgid "Assignments_"
 msgstr "Nakitusta"
 
@@ -164,27 +168,27 @@ msgstr "Kirjaudu sisään nähdäksesi tämän sivun."
 msgid "Login"
 msgstr "Kirjaudu"
 
-#: tasks/templates/tasks/base.html:24
+#: tasks/templates/tasks/base.html:25
 msgid "All events"
 msgstr "Tapahtumat"
 
-#: tasks/templates/tasks/base.html:33
+#: tasks/templates/tasks/base.html:34
 msgid "Logged in as"
 msgstr "Kirjautuneena käyttäjänä"
 
-#: tasks/templates/tasks/base.html:34
+#: tasks/templates/tasks/base.html:35
 msgid "Log out"
 msgstr "Kirjaudu ulos"
 
-#: tasks/templates/tasks/base.html:35
+#: tasks/templates/tasks/base.html:36
 msgid "Manage events"
 msgstr "Hallinnoi tapahtumia"
 
-#: tasks/templates/tasks/base.html:38
+#: tasks/templates/tasks/base.html:39
 msgid "For admins:"
 msgstr "Ylläpitäjille:"
 
-#: tasks/templates/tasks/base.html:38
+#: tasks/templates/tasks/base.html:39
 msgid "log in"
 msgstr "Kirjaudu sisään"
 
@@ -255,26 +259,34 @@ msgstr "Nakitetut"
 msgid "Registration successful, thanks!"
 msgstr "Ilmoittautuminen onnistui, kiitoksia!"
 
-#: tasks/views.py:33
+#: tasks/templates/tasks/thanks.html:6
+msgid "Link to modify your registration:"
+msgstr "Tietojen muokkauslinkki:"
+
+#: tasks/views.py:24
+msgid "Invalid modification code"
+msgstr "Muokkauslinkki on väärin"
+
+#: tasks/views.py:42
 msgid "Wrong answer to secret question!"
 msgstr "Väärä vastaus kysymykseen!"
 
-#: tasks/views.py:53
+#: tasks/views.py:63
 msgid "Event not active"
 msgstr "Tapahtuma ei tällä hetkellä auki"
 
-#: tasks/views.py:56
+#: tasks/views.py:66
 msgid "Event does not exist"
 msgstr "Tapahtumaa ei ole"
 
-#: tasks/views.py:61 tasks/views.py:110
+#: tasks/views.py:71 tasks/views.py:120
 msgid "Must be logged in for this operation!"
 msgstr "Tätä varten täytyy olla kirjautuneena"
 
-#: tasks/views.py:114
+#: tasks/views.py:124
 msgid "Must have at least one person!"
 msgstr "Täytyy olla vähintään yksi ilmoittautunut!"
 
-#: tasks/views.py:116
+#: tasks/views.py:126
 msgid "Must have at least one task!"
 msgstr "Täytyy olla vähintään yksi nakki!"

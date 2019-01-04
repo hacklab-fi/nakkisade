@@ -17,6 +17,15 @@ def event(request, event_id):
 def register(request, event_id):
     return render(request, 'tasks/register.html', {'event': check_event(event_id)})
 
+def modifyperson(request, modifycode):
+    try:
+        person = Person.objects.get(modifycode=modifycode)
+    except Person.DoesNotExist:
+        raise Http404(_("Invalid modification code"))
+    event = check_event(person.event.id)
+
+    return render(request, 'tasks/modify.html', {'event': event, 'person': person})
+
 def check_secret(request, event_id):
     event = check_event(event_id)
     if event.secret_question:
@@ -43,7 +52,8 @@ def addperson(request, event_id):
         if str(tag.id) in selected_tags:
             person.tags.add(tag)
     person.save()
-    return render(request, 'tasks/thanks.html')
+    modifycode = person.modifycode
+    return render(request, 'tasks/thanks.html', { 'modifycode': modifycode })
 
 # Returns event for given id if it exists and is active
 def check_event(event_id):

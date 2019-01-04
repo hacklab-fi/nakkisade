@@ -2,4 +2,6 @@
 {% load i18n %}
 {% block content %}
 {% trans "Registration successful, thanks!" %}
+<br/>
+{% trans "Link to modify your registration:" %} <a href="{% url 'tasks:modifyperson' modifycode %}">{% url 'tasks:modifyperson' modifycode %}</a>
 {% endblock %}

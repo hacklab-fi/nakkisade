@@ -40,13 +40,15 @@ docker run -e ADMIN_USER=admin -e ADMIN_EMAIL=nakkisadeadmin@your.host -e ADMIN_
 
 ## Running on host
 
-Like any django app
+Like any django app (example in Ubuntu 18.10)
 
 ```bash
+pip3 install -r requirements.txt 
 ./manage.py makemigrations tasks
 ./manage.py migrate
 ./manage.py createsuperuser
 django-admin compilemessages
+./manage.py runserver
 ```
 
 Use the admin interface to create events, tasks and tags.
