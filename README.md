@@ -68,3 +68,9 @@ To generate languages:
 django-admin makemessages -l fi
 django-admin compilemessages
 ```
+
+## Credits
+
+* Code & idea: Ville Ranki
+* Logo: Manu Pärssinen
+
