@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.db.models import Count
 from .models import Event, Person, Task, Assignment
+from .forms import RegistrationForm
 from operator import attrgetter
+from django.core.mail import send_mail
 
 def index(request):
     event_list = Event.objects.filter(active=True)
@@ -14,17 +16,73 @@ def index(request):
 def event(request, event_id):
     return render(request, 'tasks/event.html', {'event': check_event(event_id)})
 
+def modify_registration(request, event_id, modifycode):
+    event = check_event(event_id)
+
+    person = None
+    selected_tags = set()
+
+    # If there's a modifycode, read the existing tags
+    if modifycode:
+        person = get_object_or_404(Person, modifycode=modifycode)
+        for tag in person.tags.all():
+            selected_tags.add(tag.id)
+
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST, instance = person)
+
+        if event.secret_question:
+            secret = form.secret
+            if secret != event.secret_answer.lower():
+                form.add_error('secret', _("Wrong answer to secret question!"))
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email'] if event.ask_email else None
+            phone = form.cleaned_data['phone'] if event.ask_phone else None
+            if modifycode:
+                person = get_object_or_404(Person, modifycode = modifycode)
+                person.name = name
+                person.email = email
+                person.phone = phone
+            else:
+                person = Person(name = name, email = email, phone=phone, event = event)
+            person.full_clean()
+            for tag in request.POST.getlist('tag'):
+                selected_tags.add(int(tag))
+            person.save()
+            # Clear tags & rebuild the list from what's posted
+            person.tags.set([])
+            for tag in event.tag_set.all():
+                if str(tag.id) in selected_tags:
+                    person.tags.add(tag)
+            person.save()
+            # No modifycode = registering for first time
+            if not modifycode:
+                modifycode = person.modifycode
+                modifylink = request.build_absolute_uri(reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': modifycode }))
+                send_registration_mail(event, person, modifylink)
+                return render(request, 'tasks/thanks.html', { 'event': event, 'modifylink': modifylink })
+    else:
+        form = RegistrationForm()
+        if modifycode:
+            form = RegistrationForm(instance=person)
+            
+    return render(request, 'tasks/register.html', { 'event': event, 'form': form, 'tags': selected_tags, 'modifycode': modifycode })
+
+def send_registration_mail(event, person, modifylink):
+    send_mail(
+        _('Registration to %(eventname)s') % { 'eventname': event.name },
+        _('You have registered to this event via Nakkisade.\n' +
+        _('Use this link to modify your information: ') + modifylink,
+        event.email if event.email else 'nakkisade@nakkisade.invalid',
+        [ person.email ],
+        fail_silently=False,
+    )
+)
+
 def register(request, event_id):
-    return render(request, 'tasks/register.html', {'event': check_event(event_id)})
-
-def modifyperson(request, modifycode):
-    try:
-        person = Person.objects.get(modifycode=modifycode)
-    except Person.DoesNotExist:
-        raise Http404(_("Invalid modification code"))
-    event = check_event(person.event.id)
-
-    return render(request, 'tasks/modify.html', {'event': event, 'person': person})
+    return modify_registration(request, event_id, None)
 
 def check_secret(request, event_id):
     event = check_event(event_id)
@@ -35,24 +93,6 @@ def check_secret(request, event_id):
     return "True"
 
 def addperson(request, event_id):
-    event = check_event(event_id)
-    if event.secret_question:
-        secret = request.POST['secret'].strip().lower()
-        if secret != event.secret_answer.lower():
-            return render(request, 'tasks/register.html', {'event': check_event(event_id), 'error_message': _("Wrong answer to secret question!")})
-
-    name = request.POST['name']
-    email = request.POST['email'] if event.ask_email else None
-    phone = request.POST['phone'] if event.ask_phone else None
-    person = Person(name = name, email = email, phone=phone, event = event)
-    person.full_clean()
-    selected_tags = request.POST.getlist('tag')
-    person.save()
-    for tag in event.tag_set.all():
-        if str(tag.id) in selected_tags:
-            person.tags.add(tag)
-    person.save()
-    modifycode = person.modifycode
     return render(request, 'tasks/thanks.html', { 'modifycode': modifycode })
 
 # Returns event for given id if it exists and is active

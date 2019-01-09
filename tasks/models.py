@@ -8,6 +8,7 @@ class Event(models.Model):
     name = models.CharField(verbose_name=_('Name'), max_length=200, unique=True, validators=[MinLengthValidator(3)])
     url = models.URLField(blank=True)
     description = models.TextField(verbose_name=_('Description'), blank=True)
+    email = models.EmailField(verbose_name=_('Event organizer e-mail'), blank=True)
     active = models.BooleanField(verbose_name=_('Active'), default=False, help_text=_("Set to true to allow registration"))
     secret_question = models.CharField(verbose_name=_('Secret question'), blank=True, max_length=512, help_text=_("Question to ask for registration"))
     secret_answer = models.CharField(verbose_name=_('Secret answer'), blank=True, max_length=512, help_text=_("Answer to secret question"))
@@ -51,7 +52,7 @@ class Task(models.Model):
 class Person(models.Model):
     event = models.ForeignKey(Event, verbose_name=_('Event'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Name'), max_length=200, unique=True, validators=[MinLengthValidator(3)])
-    email = models.CharField(verbose_name=_('E-mail'), max_length=100, null=True, blank=True)
+    email = models.EmailField(verbose_name=_('E-mail'), null=True, blank=True)
     phone = models.CharField(verbose_name=_('Phone'), max_length=100, null=True, blank=True)
     tags = models.ManyToManyField(Tag, verbose_name=_('Tags'), blank=True, help_text=_("Tags for this person"))
     modifycode = models.UUIDField(verbose_name=_('Modification code'), default=uuid.uuid4, editable=False)

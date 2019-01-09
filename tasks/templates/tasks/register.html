@@ -6,38 +6,70 @@
 <div class="panel-body">
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'tasks:addperson' event.id %}" method="post">
+{% if modifycode %}
+<form action="{% url 'tasks:modify_registration' event.id modifycode %}" method="post">
+{% else %}
+<form action="{% url 'tasks:register' event.id %}" method="post">
+{% endif %}
 {% csrf_token %}
+{{ form.non_field_errors }}
+
 <fieldset>
 <div class="form-group">
-<label for="name">{% trans "Name" %}</label>
-<input type="text" name="name" id="name" class="form-control">
+<label for="name">{{ form.name.label }}</label>
+
+{% if form.name.errors %}
+<div class="alert alert-danger">
+    {{ form.name.errors }}
+</div>
+{% endif %}
+<input type="text" name="name" id="name" class="form-control" value="{{ form.name.value|default_if_none:"" }}">
 </div>
 {% if event.ask_email %}
   <div class="form-group">
-  <label for="exampleInputEmail1">{% trans "E-mail" %}</label>
-  <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="{% trans "E-mail" %}">
+  <label for="exampleInputEmail1">{{ form.email.label }}</label>
+  {% if form.email.errors %}
+  <div class="alert alert-danger">
+      {{ form.email.errors }}
+  </div>
+  {% endif %}
+  <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="{{ form.email.label }}" value="{{ form.email.value|default_if_none:"" }}">
   <small id="emailHelp" class="form-text text-muted">{% trans "We'll never share your email with anyone else." %}</small>
   </div>
 {% endif %}
 {% if event.ask_phone %}
   <div class="form-group">
-  <label for="phone">{% trans "Phone number" %}</label>
-  <input type="text" name="phone" id="phone" class="form-control">
+  <label for="phone">{{ form.phone.label }}</label>
+  {% if form.phone.errors %}
+  <div class="alert alert-danger">
+    {{ form.phone.errors }}
+  </div>
+  {% endif %}
+  <input type="text" name="phone" id="phone" class="form-control" value="{{ form.phone.value|default_if_none:"" }}">
   </div>
 {% endif %}
 {% if event.secret_question %}
   <div class="form-group">
   <label for="secret">{{ event.secret_question }}</label>
-  <input type="text" name="secret" id="secret" class="form-control">
+  {% if form.secret.errors %}
+  <div class="alert alert-danger">
+      {{ form.secret.errors }}
+  </div>
+  {% endif %}
+  <input type="text" name="secret" id="secret" class="form-control" value="{{ form.secret.value|default_if_none:"" }}">
   </div>
 {% endif %}
 <br/>
 <div>
+
 {% for tag in event.tag_set.all %}
 <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><label><input type="checkbox" name="tag" id="tag{{ tag.id }}" value="{{ tag.id }}"> {{ tag.name }} </label></h5>
+          <h5 class="card-title">
+            <label>
+            <input type="checkbox" name="tag" id="tag{{ tag.id }}" value="{{ tag.id }}" {% if tag.id in tags %} checked{% endif %}> {{ tag.name }}
+          </label>
+        </h5>
           {% if tag.description %}
           <p class="card-text">{{ tag.description }}</p>
           {% endif %}
