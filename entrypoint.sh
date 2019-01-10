@@ -1,8 +1,6 @@
 #!/bin/bash
 
 django-admin compilemessages
-echo "Making database migrations"
-./manage.py makemigrations tasks
 echo "Applying database migrations"
 python manage.py migrate --run-syncdb
 
