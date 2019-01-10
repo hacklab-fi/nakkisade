@@ -38,6 +38,9 @@ docker image build . --name nakkisade
 docker run -e ADMIN_USER=admin -e ADMIN_EMAIL=nakkisadeadmin@your.host -e ADMIN_PASSWORD=adminpassword  --name nakkisade -d nakkisade
 ```
 
+If you use docker-compose, there's a file ready for you. Just modify the docker-environment.env file
+for your needs.
+
 ## Running on host
 
 Like any django app (example in Ubuntu 18.10)
