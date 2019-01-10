@@ -60,6 +60,11 @@ http://127.0.0.1:8000/tasks/
 
 To generate task list, log in to app using the login link (use the admin account). 
 
+## Custom settings
+
+If you want custom settings, put them in settings_local.py. There's a template
+version of it in nakkisade/. 
+
 ## Developer stuff
 
 To generate languages:

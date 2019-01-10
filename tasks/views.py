@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.db.models import Count
+from django.conf import settings
 from .models import Event, Person, Task, Assignment
 from .forms import RegistrationForm
 from operator import attrgetter
@@ -71,15 +72,17 @@ def modify_registration(request, event_id, modifycode):
     return render(request, 'tasks/register.html', { 'event': event, 'form': form, 'tags': selected_tags, 'modifycode': modifycode })
 
 def send_registration_mail(event, person, modifylink):
+    if not settings.EMAIL_HOST:
+        print('No e-mail host set, not sending mail.')
+        return
     send_mail(
         _('Registration to %(eventname)s') % { 'eventname': event.name },
-        _('You have registered to this event via Nakkisade.\n' +
-        _('Use this link to modify your information: ') + modifylink,
+        _('You have registered to this event via Nakkisade.') + '\n\n' +
+        _('Use this link to modify your information:') + ' ' + modifylink,
         event.email if event.email else 'nakkisade@nakkisade.invalid',
         [ person.email ],
-        fail_silently=False,
+        fail_silently=True
     )
-)
 
 def register(request, event_id):
     return modify_registration(request, event_id, None)

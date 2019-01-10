@@ -1,23 +1,19 @@
 {% extends "tasks/base.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
 <div class="jumbotron text-center">
+    <img src="{% static "nakkisade.png" %}" alt="Logo"  class="img-fluid" width="20%" height="20%">
     <h1>{% trans "Welcome to Nakkisade event organizing" %}</h1>
     <p>{% trans "Choose event" %}</p>
 </div>
 {% if event_list %}
 <div class="row">
     {% for event in event_list %}
-    <div class="col-sm-4">
-    <h3>{{ event.name }}</h3>
-    <p>{{ event.description }}</p>
-    {% if event.url %}
-        <p><a href="{{ event.url }}">{{ event.url }}</a></p>
-    {% endif %}
-    <p><a href="{% url 'tasks:event' event.id %}" class="btn btn-info">{% trans "Information" %}</a></li></p>
-    <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">{% trans "Register" %}</a></li></p>
-    </div>
+    <a href="{% url 'tasks:event' event.id %}" class="btn btn-primary btn-lg">
+    {{ event.name }}
+    </a>
     {% endfor %}
 </div>
 {% else %}

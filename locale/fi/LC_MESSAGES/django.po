@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-04 16:56+0200\n"
+"POT-Creation-Date: 2019-01-10 16:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,141 +18,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: tasks/models.py:8 tasks/models.py:25 tasks/models.py:35 tasks/models.py:53
-#: tasks/templates/tasks/register.html:13
+#: tasks/models.py:8 tasks/models.py:26 tasks/models.py:36 tasks/models.py:54
 msgid "Name"
 msgstr "Nimi"
 
-#: tasks/models.py:10 tasks/models.py:26 tasks/models.py:36
+#: tasks/models.py:10 tasks/models.py:27 tasks/models.py:37
 msgid "Description"
 msgstr "Kuvaus"
 
 #: tasks/models.py:11
+msgid "Event organizer e-mail"
+msgstr "Järjestäjän sähköposti"
+
+#: tasks/models.py:12
 msgid "Active"
 msgstr "Aktiivinen"
 
-#: tasks/models.py:11
+#: tasks/models.py:12
 msgid "Set to true to allow registration"
 msgstr "Ilmoittautuminen auki"
 
-#: tasks/models.py:12
+#: tasks/models.py:13
 msgid "Secret question"
 msgstr "Kysymys ilmoittautujille"
 
-#: tasks/models.py:12
+#: tasks/models.py:13
 msgid "Question to ask for registration"
 msgstr "Kysymys ilmoittautujille, jätä tyhjäksi jos ei tarvita."
 
-#: tasks/models.py:13
+#: tasks/models.py:14
 msgid "Secret answer"
 msgstr "Vastaus kysymykseen"
 
-#: tasks/models.py:13
+#: tasks/models.py:14
 msgid "Answer to secret question"
 msgstr "Oikea vastaus kysymykseen"
 
-#: tasks/models.py:14
+#: tasks/models.py:15
 msgid "Public tasks"
 msgstr "Julkiset nakit"
 
-#: tasks/models.py:14
+#: tasks/models.py:15
 msgid "Show tasks in public views"
 msgstr "Näytetäänkö nakit julkisesti"
 
-#: tasks/models.py:15
+#: tasks/models.py:16
 msgid "Ask e-mail"
 msgstr "Kysy sähköpostiosoite"
 
-#: tasks/models.py:15
+#: tasks/models.py:16
 msgid "Ask email address in registration"
 msgstr "Kysytäänkö ilmoittautumisessa sähköpostiosoitetta"
 
-#: tasks/models.py:16
+#: tasks/models.py:17
 msgid "Ask phone"
 msgstr "Kysy puhelinnumero"
 
-#: tasks/models.py:16
+#: tasks/models.py:17
 msgid "Ask phone number in registration"
 msgstr "Kysytäänkö ilmoittautumisessa puhelinnumero"
 
-#: tasks/models.py:20 tasks/models.py:24 tasks/models.py:34 tasks/models.py:52
+#: tasks/models.py:21 tasks/models.py:25 tasks/models.py:35 tasks/models.py:53
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: tasks/models.py:21
+#: tasks/models.py:22
 msgid "Events_"
 msgstr "Tapahtumat"
 
-#: tasks/models.py:30
+#: tasks/models.py:31
 msgid "Tag"
 msgstr "Ominaisuus"
 
-#: tasks/models.py:31
+#: tasks/models.py:32
 msgid "Tags_"
 msgstr "Ominaisuudet"
 
-#: tasks/models.py:37
+#: tasks/models.py:38
 msgid "Points"
 msgstr "Pisteet"
 
-#: tasks/models.py:38
+#: tasks/models.py:39
 msgid "Minimum assignees"
 msgstr "Nakitettavien määrä"
 
-#: tasks/models.py:38
+#: tasks/models.py:39
 msgid "Minimum number of assignees for the task"
 msgstr "Nakitettavien vähimmäismäärä"
 
-#: tasks/models.py:39
+#: tasks/models.py:40
 msgid "Required tags"
 msgstr "Vaaditut ominaisuudet"
 
-#: tasks/models.py:39
+#: tasks/models.py:40
 msgid "Tags required for task assignees"
 msgstr "Nakitettaville pakolliset ominaisuudet"
 
-#: tasks/models.py:48
+#: tasks/models.py:49
 msgid "Task"
 msgstr "Nakki"
 
-#: tasks/models.py:49
+#: tasks/models.py:50
 msgid "Tasks_"
 msgstr "Nakit"
 
-#: tasks/models.py:54 tasks/templates/tasks/register.html:18
-#: tasks/templates/tasks/register.html:19
+#: tasks/models.py:55
 msgid "E-mail"
 msgstr "Sähköpostiosoite"
 
-#: tasks/models.py:55
+#: tasks/models.py:56
 msgid "Phone"
 msgstr "Puhelinnumero"
 
-#: tasks/models.py:56
+#: tasks/models.py:57
 msgid "Tags"
 msgstr "Ominaisuudet"
 
-#: tasks/models.py:56
+#: tasks/models.py:57
 msgid "Tags for this person"
 msgstr "Ilmoittautuneen ominaisuudet"
 
-#: tasks/models.py:57
+#: tasks/models.py:58
 msgid "Modification code"
-msgstr ""
+msgstr "Muokkauskoodi"
 
-#: tasks/models.py:66
+#: tasks/models.py:67
 msgid "Person"
 msgstr "Ilmoittautunut"
 
-#: tasks/models.py:67
+#: tasks/models.py:68
 msgid "Persons_"
 msgstr "Ilmoittautuneet"
 
-#: tasks/models.py:81
+#: tasks/models.py:82
 msgid "Assignment"
 msgstr "Nakitus"
 
-#: tasks/models.py:82
+#: tasks/models.py:83
 msgid "Assignments_"
 msgstr "Nakitusta"
 
@@ -204,8 +206,7 @@ msgstr "pistettä"
 msgid "Can't find people to complete task!"
 msgstr "Ei tarpeeksi osallistujia nakin tekemiseen!"
 
-#: tasks/templates/tasks/event.html:13 tasks/templates/tasks/index.html:19
-#: tasks/templates/tasks/register.html:49
+#: tasks/templates/tasks/event.html:13 tasks/templates/tasks/register.html:81
 msgid "Register"
 msgstr "Ilmoittaudu"
 
@@ -214,23 +215,19 @@ msgstr "Ilmoittaudu"
 msgid "Task list"
 msgstr "Nakkilista"
 
-#: tasks/templates/tasks/index.html:6
+#: tasks/templates/tasks/index.html:8
 msgid "Welcome to Nakkisade event organizing"
 msgstr "Tervetuloa nakkisateeseen"
 
-#: tasks/templates/tasks/index.html:7
+#: tasks/templates/tasks/index.html:9
 msgid "Choose event"
 msgstr "Valitse tapahtuma"
 
-#: tasks/templates/tasks/index.html:18
-msgid "Information"
-msgstr "Lisätietoja"
-
-#: tasks/templates/tasks/index.html:25
+#: tasks/templates/tasks/index.html:21
 msgid "No events are available"
 msgstr "Ei tapahtumia avoinna"
 
-#: tasks/templates/tasks/index.html:25
+#: tasks/templates/tasks/index.html:21
 msgid "add them as admin"
 msgstr "lisää niitä ylläpitäjänä"
 
@@ -238,13 +235,9 @@ msgstr "lisää niitä ylläpitäjänä"
 msgid "Register to"
 msgstr "Ilmoittaudu tapahtumaan"
 
-#: tasks/templates/tasks/register.html:20
+#: tasks/templates/tasks/register.html:37
 msgid "We'll never share your email with anyone else."
 msgstr "Emme jakele sähköpostiosoitteita ulkopuolisille"
-
-#: tasks/templates/tasks/register.html:25
-msgid "Phone number"
-msgstr "Puhelinnumero"
 
 #: tasks/templates/tasks/tasklist.html:7
 msgid "Reassign tasks"
@@ -263,30 +256,38 @@ msgstr "Ilmoittautuminen onnistui, kiitoksia!"
 msgid "Link to modify your registration:"
 msgstr "Tietojen muokkauslinkki:"
 
-#: tasks/views.py:24
-msgid "Invalid modification code"
-msgstr "Muokkauslinkki on väärin"
-
-#: tasks/views.py:42
+#: tasks/views.py:38
 msgid "Wrong answer to secret question!"
 msgstr "Väärä vastaus kysymykseen!"
 
-#: tasks/views.py:63
+#: tasks/views.py:79
+msgid "Registration to %(eventname)s"
+msgstr "Ilmoittautuminen tapahtumaan %(eventname)s"
+
+#: tasks/views.py:80
+msgid "You have registered to this event via Nakkisade."
+msgstr "Olet ilmoittautunut tapahtumaan Nakkisateen kautta."
+
+#: tasks/views.py:81
+msgid "Use this link to modify your information:"
+msgstr "Tietojen muokkauslinkki:"
+
+#: tasks/views.py:106
 msgid "Event not active"
 msgstr "Tapahtuma ei tällä hetkellä auki"
 
-#: tasks/views.py:66
+#: tasks/views.py:109
 msgid "Event does not exist"
 msgstr "Tapahtumaa ei ole"
 
-#: tasks/views.py:71 tasks/views.py:120
+#: tasks/views.py:114 tasks/views.py:163
 msgid "Must be logged in for this operation!"
 msgstr "Tätä varten täytyy olla kirjautuneena"
 
-#: tasks/views.py:124
+#: tasks/views.py:167
 msgid "Must have at least one person!"
 msgstr "Täytyy olla vähintään yksi ilmoittautunut!"
 
-#: tasks/views.py:126
+#: tasks/views.py:169
 msgid "Must have at least one task!"
 msgstr "Täytyy olla vähintään yksi nakki!"
