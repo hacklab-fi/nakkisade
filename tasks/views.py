@@ -88,6 +88,28 @@ def send_registration_mail(event, person, modifylink):
 def register(request, event_id):
     return modify_registration(request, event_id, None)
 
+def message_all(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    error_message = None
+    success_message = None
+    if not request.user.is_authenticated:
+        return render(request, 'tasks/event.html', {'event': event, 'error_message': _("Must be logged in for this operation!")})
+    if request.method == 'POST':
+        subject = request.POST['subject'].strip()
+        body = request.POST['body']
+        if(len(subject) > 3 and len(body) > 5):
+            persons = Person.objects.filter(event=event)
+            recipients = set()
+            for person in persons:
+                if person.email and len(person.email) > 3:
+                    recipients.add(person.email)
+            send_mail(subject, body, event.email if event.email else 'nakkisade@nakkisade.invalid', recipients, fail_silently=True)
+            success_message = _('Sent message to %(count)s addresses' % { 'count': str(len(recipients)) })
+        else:
+            error_message = _('Please enter subject and body')
+    
+    return render(request, 'tasks/messageall.html', { 'event': event, 'error_message': error_message, 'success_message': success_message })
+
 def check_secret(request, event_id):
     event = check_event(event_id)
     if event.secret_question:

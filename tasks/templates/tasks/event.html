@@ -1,6 +1,11 @@
 {% extends "tasks/base.html" %}
 {% load i18n %}
 {% block content %}
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+{{ error_message }}
+</div>
+{% endif %}
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">{{ event }}</h5>
@@ -13,6 +18,7 @@
         <p><a href="{% url 'tasks:register' event.id %}" class="btn btn-info">{% trans "Register" %}</a></li></p>
         {% if user.is_authenticated %}
             <a href="{%url 'tasks:tasklist' event.id %}" class="btn btn-warning">{% trans "Task list" %}</a>
+            <a href="{%url 'tasks:message_all' event.id %}" class="btn btn-warning">{% trans "Message all" %}</a>
         {% endif %}
         </div>
 </div>

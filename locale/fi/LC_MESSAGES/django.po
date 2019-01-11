@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-10 16:31+0200\n"
+"POT-Creation-Date: 2019-01-11 17:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,14 +206,18 @@ msgstr "pistettä"
 msgid "Can't find people to complete task!"
 msgstr "Ei tarpeeksi osallistujia nakin tekemiseen!"
 
-#: tasks/templates/tasks/event.html:13 tasks/templates/tasks/register.html:81
+#: tasks/templates/tasks/event.html:18 tasks/templates/tasks/register.html:84
 msgid "Register"
 msgstr "Ilmoittaudu"
 
-#: tasks/templates/tasks/event.html:15 tasks/templates/tasks/event.html:23
+#: tasks/templates/tasks/event.html:20 tasks/templates/tasks/event.html:29
 #: tasks/templates/tasks/tasklist.html:9
 msgid "Task list"
 msgstr "Nakkilista"
+
+#: tasks/templates/tasks/event.html:21
+msgid "Message all"
+msgstr "Lähetä viesti osallistujille"
 
 #: tasks/templates/tasks/index.html:8
 msgid "Welcome to Nakkisade event organizing"
@@ -231,6 +235,23 @@ msgstr "Ei tapahtumia avoinna"
 msgid "add them as admin"
 msgstr "lisää niitä ylläpitäjänä"
 
+#: tasks/templates/tasks/messageall.html:4
+msgid "Message all in"
+msgstr "Lähetä viesti kaikille jotka osallistuvat tapahtumaan"
+
+#: tasks/templates/tasks/messageall.html:20
+#: tasks/templates/tasks/messageall.html:21
+msgid "Subject"
+msgstr "Otsikko"
+
+#: tasks/templates/tasks/messageall.html:24
+msgid "Message"
+msgstr "Viesti"
+
+#: tasks/templates/tasks/messageall.html:27
+msgid "Send message"
+msgstr "Lähetä viesti"
+
 #: tasks/templates/tasks/register.html:5
 msgid "Register to"
 msgstr "Ilmoittaudu tapahtumaan"
@@ -238,6 +259,10 @@ msgstr "Ilmoittaudu tapahtumaan"
 #: tasks/templates/tasks/register.html:37
 msgid "We'll never share your email with anyone else."
 msgstr "Emme jakele sähköpostiosoitteita ulkopuolisille"
+
+#: tasks/templates/tasks/register.html:82
+msgid "Save changes"
+msgstr "Tallenna muutokset"
 
 #: tasks/templates/tasks/tasklist.html:7
 msgid "Reassign tasks"
@@ -256,38 +281,48 @@ msgstr "Ilmoittautuminen onnistui, kiitoksia!"
 msgid "Link to modify your registration:"
 msgstr "Tietojen muokkauslinkki:"
 
-#: tasks/views.py:38
+#: tasks/views.py:34
 msgid "Wrong answer to secret question!"
 msgstr "Väärä vastaus kysymykseen!"
 
-#: tasks/views.py:79
+#: tasks/views.py:80
+#, python-format
 msgid "Registration to %(eventname)s"
 msgstr "Ilmoittautuminen tapahtumaan %(eventname)s"
 
-#: tasks/views.py:80
+#: tasks/views.py:81
 msgid "You have registered to this event via Nakkisade."
 msgstr "Olet ilmoittautunut tapahtumaan Nakkisateen kautta."
 
-#: tasks/views.py:81
+#: tasks/views.py:82
 msgid "Use this link to modify your information:"
 msgstr "Tietojen muokkauslinkki:"
 
-#: tasks/views.py:106
-msgid "Event not active"
-msgstr "Tapahtuma ei tällä hetkellä auki"
-
-#: tasks/views.py:109
-msgid "Event does not exist"
-msgstr "Tapahtumaa ei ole"
-
-#: tasks/views.py:114 tasks/views.py:163
+#: tasks/views.py:96 tasks/views.py:137 tasks/views.py:186
 msgid "Must be logged in for this operation!"
 msgstr "Tätä varten täytyy olla kirjautuneena"
 
-#: tasks/views.py:167
+#: tasks/views.py:107
+#, python-format
+msgid "Sent message to %(count)s addresses"
+msgstr "%(count)s viestiä lähetetty"
+
+#: tasks/views.py:109
+msgid "Please enter subject and body"
+msgstr "Anna otsikko ja viesti"
+
+#: tasks/views.py:129
+msgid "Event not active"
+msgstr "Tapahtuma ei tällä hetkellä auki"
+
+#: tasks/views.py:132
+msgid "Event does not exist"
+msgstr "Tapahtumaa ei ole"
+
+#: tasks/views.py:190
 msgid "Must have at least one person!"
 msgstr "Täytyy olla vähintään yksi ilmoittautunut!"
 
-#: tasks/views.py:169
+#: tasks/views.py:192
 msgid "Must have at least one task!"
 msgstr "Täytyy olla vähintään yksi nakki!"
