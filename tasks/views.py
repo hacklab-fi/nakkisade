@@ -21,14 +21,10 @@ def modify_registration(request, event_id, modifycode):
     event = check_event(event_id)
 
     person = None
-    selected_tags = set()
-
-    # If there's a modifycode, read the existing tags
     if modifycode:
         person = get_object_or_404(Person, modifycode=modifycode)
-        for tag in person.tags.all():
-            selected_tags.add(tag.id)
 
+    selected_tags = set()
     if request.method == 'POST':
         form = RegistrationForm(request.POST, instance = person)
 
@@ -65,6 +61,11 @@ def modify_registration(request, event_id, modifycode):
                 send_registration_mail(event, person, modifylink)
                 return render(request, 'tasks/thanks.html', { 'event': event, 'modifylink': modifylink })
     else:
+        # HTTP GET
+        # If there's a modifycode, read the existing tags
+        if modifycode:
+            for tag in person.tags.all():
+                selected_tags.add(tag.id)
         form = RegistrationForm()
         if modifycode:
             form = RegistrationForm(instance=person)

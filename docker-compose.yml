@@ -1,10 +1,5 @@
 version: '3' 
 
-networks:
-  default:
-    external:
-      name: tamperehacklab
-
 services: 
   nakkisade: 
     build: . 
@@ -14,7 +9,5 @@ services:
      - ${PWD}/data:/code/data
     ports:
      - "8000:8000"
-    networks:
-      - default
     env_file:
       - docker-environment.env
