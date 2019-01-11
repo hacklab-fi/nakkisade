@@ -1,9 +1,12 @@
+
+# You probably want to set this to correct hostname
+ALLOWED_HOSTS = ['nakkisade']
+
 # Email settings
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-EMAIL_HOST
-
-EMAIL_HOST = None
-EMAIL_PORT = None
-EMAIL_HOST_USER = None
-EMAIL_HOST_PASSWORD = None
-EMAIL_USE_TLS = None
-EMAIL_USE_SSL = None
+#EMAIL_HOST =
+#EMAIL_PORT =
+#EMAIL_HOST_USER =
+#EMAIL_HOST_PASSWORD =
+#EMAIL_USE_TLS =
+#EMAIL_USE_SSL =

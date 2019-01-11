@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-if os.path.exists('settings_local.py'):
-    from settings_local import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5ij+0r9g%)z^@q-k_^gq+e$9uamk82b5!c#&#+$#^z*hvk@lva'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -131,3 +129,6 @@ LOCALE_PATHS = (
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/tasks'
+
+if os.path.exists('settings_local.py'):
+    from settings_local import *
