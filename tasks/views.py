@@ -55,7 +55,7 @@ def modify_registration(request, event_id, modifycode):
             # Clear tags & rebuild the list from what's posted
             person.tags.set([])
             for tag in event.tag_set.all():
-                if str(tag.id) in selected_tags:
+                if tag.id in selected_tags:
                     person.tags.add(tag)
             person.save()
             # No modifycode = registering for first time
