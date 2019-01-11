@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'fi'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -130,5 +130,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/tasks'
 
-if os.path.exists('settings_local.py'):
+try:
     from settings_local import *
+except ImportError:
+    pass
