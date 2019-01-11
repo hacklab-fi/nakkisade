@@ -2,6 +2,9 @@
 # You probably want to set this to correct hostname
 ALLOWED_HOSTS = ['nakkisade']
 
+# Set this if the modification link URL's are not correct. No trailing /
+#URL_PREFIX = 'https://your.host.tld'
+
 # Email settings
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-EMAIL_HOST
 #EMAIL_HOST =

@@ -61,7 +61,7 @@ def modify_registration(request, event_id, modifycode):
             # No modifycode = registering for first time
             if not modifycode:
                 modifycode = person.modifycode
-                modifylink = request.build_absolute_uri(reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': modifycode }))
+                modifylink = modify_link_for(person, event, request)
                 send_registration_mail(event, person, modifylink)
                 return render(request, 'tasks/thanks.html', { 'event': event, 'modifylink': modifylink })
     else:
@@ -206,3 +206,8 @@ def create_tasks(request, event_id):
                     task.failed = True
                     task.complete = True
     return tasklist(request, event_id)
+
+def modify_link_for(person, event, request):
+    if hasattr(settings, 'URL_PREFIX'):
+        return settings.URL_PREFIX + reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': person.modifycode })
+    return request.build_absolute_uri(reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': person.modifycode }))
