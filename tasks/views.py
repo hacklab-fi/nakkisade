@@ -8,6 +8,7 @@ from .models import Event, Person, Task, Assignment
 from .forms import RegistrationForm
 from operator import attrgetter
 from django.core.mail import send_mail
+from matrix import Matrix
 
 def index(request):
     event_list = Event.objects.filter(active=True)
@@ -28,12 +29,14 @@ def modify_registration(request, event_id, modifycode):
     if request.method == 'POST':
         form = RegistrationForm(request.POST, instance = person)
 
-        if event.secret_question:
-            secret = form.secret
-            if secret != event.secret_answer.lower():
-                form.add_error('secret', _("Wrong answer to secret question!"))
-
         if form.is_valid():
+            secret_ok = True
+            if not modifycode and event.secret_question:
+                secret = form.cleaned_data['secret']
+                if secret != event.secret_answer.lower():
+                    secret_ok = False
+                    form.add_error('secret', _("Wrong answer to secret question!"))
+
             name = form.cleaned_data['name']
             email = form.cleaned_data['email'] if event.ask_email else None
             phone = form.cleaned_data['phone'] if event.ask_phone else None
@@ -47,17 +50,19 @@ def modify_registration(request, event_id, modifycode):
             person.full_clean()
             for tag in request.POST.getlist('tag'):
                 selected_tags.add(int(tag))
-            person.save()
-            # Clear tags & rebuild the list from what's posted
-            person.tags.set([])
-            for tag in event.tag_set.all():
-                if tag.id in selected_tags:
-                    person.tags.add(tag)
-            person.save()
+            if secret_ok:
+                person.save()
+                # Clear tags & rebuild the list from what's posted
+                person.tags.set([])
+                for tag in event.tag_set.all():
+                    if tag.id in selected_tags:
+                        person.tags.add(tag)
+                person.save()
             # No modifycode = registering for first time
-            if not modifycode:
+            if not modifycode and secret_ok:
                 modifycode = person.modifycode
                 modifylink = modify_link_for(person, event, request)
+                send_notification('Nakkisade: ' + name + ' registered to ' + event.name + ' (#' + str(Person.objects.filter(event=event).count()) + ')' )
                 send_registration_mail(event, person, modifylink)
                 return render(request, 'tasks/thanks.html', { 'event': event, 'modifylink': modifylink })
     else:
@@ -234,3 +239,8 @@ def modify_link_for(person, event, request):
     if hasattr(settings, 'URL_PREFIX'):
         return settings.URL_PREFIX + reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': person.modifycode })
     return request.build_absolute_uri(reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': person.modifycode }))
+
+def send_notification(text):
+    if hasattr(settings, 'MATRIX_NOTIFICATIONS_ROOM'):
+        matrix = Matrix(settings.MATRIX_USERNAME, settings.MATRIX_PASSWORD, settings.MATRIX_HOMESERVER)
+        matrix.send_notification(settings.MATRIX_NOTIFICATIONS_ROOM, text)

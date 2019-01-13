@@ -13,3 +13,9 @@ ALLOWED_HOSTS = ['nakkisade']
 #EMAIL_HOST_PASSWORD =
 #EMAIL_USE_TLS =
 #EMAIL_USE_SSL =
+
+# Matrix settings
+#MATRIX_USERNAME = 'myuser'
+#MATRIX_PASSWORD = 'mypassword'
+#MATRIX_HOMESERVER = 'https://matrix.org'
+#MATRIX_NOTIFICATIONS_ROOM = '#example:matrix.org'

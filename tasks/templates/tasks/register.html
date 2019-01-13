@@ -48,7 +48,7 @@
   <input type="text" name="phone" id="phone" class="form-control" value="{{ form.phone.value|default_if_none:"" }}">
   </div>
 {% endif %}
-{% if event.secret_question %}
+{% if not modifycode and event.secret_question %}
   <div class="form-group">
   <label for="secret">{{ event.secret_question }}</label>
   {% if form.secret.errors %}

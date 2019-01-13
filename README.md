@@ -68,6 +68,12 @@ To generate task list, log in to app using the login link (use the admin account
 If you want custom settings, put them in settings_local.py. There's a template
 version of it in nakkisade/. 
 
+### Matrix support
+
+Nakkisade supports notifications of registrations on a Matrix channel. Set the
+relevant variables in settings_local.py (see template) and Nakkisade will
+notify when people register on the notification channel.
+
 ## Developer stuff
 
 To generate languages:
@@ -81,4 +87,3 @@ django-admin compilemessages
 
 * Code & idea: Ville Ranki
 * Logo: Manu Pärssinen
-

@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5ij+0r9g%)z^@q-k_^gq+e$9uamk82b5!c#&#+$#^z*hvk@lva'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# TODO: Figure out how to server static files with debug off. 
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
