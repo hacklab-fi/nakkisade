@@ -24,11 +24,9 @@ def modify_registration(request, event_id, modifycode):
     person = None
     if modifycode:
         person = get_object_or_404(Person, modifycode=modifycode)
-
     selected_tags = set()
     if request.method == 'POST':
         form = RegistrationForm(request.POST, instance = person)
-
         if form.is_valid():
             secret_ok = True
             if not modifycode and event.secret_question:
@@ -65,6 +63,8 @@ def modify_registration(request, event_id, modifycode):
                 send_notification('Nakkisade: ' + name + ' registered to ' + event.name + ' (#' + str(Person.objects.filter(event=event).count()) + ')' )
                 send_registration_mail(event, person, modifylink)
                 return render(request, 'tasks/thanks.html', { 'event': event, 'modifylink': modifylink })
+        else:
+            form.add_error(None, _('Please fix errors on the form'))
     else:
         # HTTP GET
         # If there's a modifycode, read the existing tags
@@ -241,6 +241,9 @@ def modify_link_for(person, event, request):
     return request.build_absolute_uri(reverse('tasks:modify_registration', kwargs={'event_id': event.id, 'modifycode': person.modifycode }))
 
 def send_notification(text):
-    if hasattr(settings, 'MATRIX_NOTIFICATIONS_ROOM'):
+    if use_matrix():
         matrix = Matrix(settings.MATRIX_USERNAME, settings.MATRIX_PASSWORD, settings.MATRIX_HOMESERVER)
         matrix.send_notification(settings.MATRIX_NOTIFICATIONS_ROOM, text)
+
+def use_matrix():
+    return hasattr(settings, 'MATRIX_NOTIFICATIONS_ROOM')

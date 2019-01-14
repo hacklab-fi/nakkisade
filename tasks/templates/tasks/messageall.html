@@ -1,0 +1,30 @@
+{% extends "tasks/base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{% trans "Message all in" %} {{ event.name }} </h1>
+
+{% if success_message %}
+<div class="alert alert-success" role="alert">
+{{ success_message }}
+</div>
+{% endif %}
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+{{ error_message }}
+</div>
+{% endif %}
+
+<form action="{% url 'tasks:message_all' event.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="subject">{% trans "Subject" %}</label>
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="{% trans "Subject" %}">
+    </div>
+    <div class="form-group">
+        <label for="formGroupBody">{% trans "Message" %}</label>
+        <textarea class="form-control" id="formGroupBody" rows="15" id="body" name="body"></textarea>
+    </div>
+    <input type="submit" value="{% trans "Send message" %}" class="btn btn-primary">
+</form>
+
+{% endblock %}
